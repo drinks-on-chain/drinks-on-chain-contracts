@@ -1,0 +1,7 @@
+[toolchain]
+# Fijada para builds reproducibles. soroban-sdk 26 exige Rust >= 1.91 y el
+# objetivo wasm32v1-none (sin reference-types ni otras extensiones de WASM).
+channel = "1.98.1"
+targets = ["wasm32v1-none"]
+components = ["rustfmt", "clippy"]
+profile = "minimal"

@@ -1,0 +1,37 @@
+[workspace]
+resolver = "2"
+members = ["contracts/*"]
+
+[workspace.package]
+authors = ["Drinks on Chain"]
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/drinks-on-chain/drinks-on-chain-contracts"
+publish = false
+version = "0.1.0"
+rust-version = "1.91"
+
+# Versiones fijadas con `=`: OpenZeppelin Stellar Contracts 0.7.2 (código
+# auditado en 0.7.0, sin cambios de fuente en los módulos que usamos) y el
+# soroban-sdk que exige esa versión. Ver docs/decisiones.md (DS-01).
+[workspace.dependencies]
+soroban-sdk = "=26.1.1"
+stellar-access = "=0.7.2"
+stellar-contract-utils = "=0.7.2"
+stellar-macros = "=0.7.2"
+stellar-tokens = "=0.7.2"
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
+
+# Igual que release pero con los registros de depuración de Soroban activos.
+[profile.release-with-logs]
+inherits = "release"
+debug-assertions = true
