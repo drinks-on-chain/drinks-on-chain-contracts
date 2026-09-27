@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [dev, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  # Versión de stellar-cli usada para compilar el WASM (spec shaking v2 de
+  # soroban-sdk 26 exige `stellar contract build`, stellar-cli >= 25.2).
+  STELLAR_CLI_VERSION: 28.1.0
+
+jobs:
+  contracts:
+    name: fmt · clippy · test · wasm
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Toolchain de Rust (rust-toolchain.toml)
+        run: |
+          rustup toolchain install
+          rustc --version
+          cargo --version
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Formato
+        run: cargo fmt --all --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Pruebas
+        run: cargo test
+
+      - name: Instalar stellar-cli
+        run: |
+          curl -fsSL "https://github.com/stellar/stellar-cli/releases/download/v${STELLAR_CLI_VERSION}/stellar-cli-${STELLAR_CLI_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/stellar" --version
+
+      - name: Construir el WASM optimizado
+        run: stellar contract build --package winery-nft --locked --out-dir dist
+
+      - name: Simulación del despliegue (pruebas sobre el WASM)
+        run: |
+          cargo clippy --all-targets --features wasm-tests -- -D warnings
+          cargo test -p winery-nft --features wasm-tests test_wasm
+
+      - name: Tamaño y hash
+        run: |
+          cd dist
+          sha256sum winery_nft.wasm | tee winery_nft.wasm.sha256
+          size=$(stat -c %s winery_nft.wasm)
+          {
+            echo "### winery_nft.wasm"
+            echo ""
+            echo "| Tamaño | SHA-256 |"
+            echo "|---|---|"
+            echo "| ${size} bytes | \`$(cut -d' ' -f1 winery_nft.wasm.sha256)\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: winery-nft-wasm-${{ github.sha }}
+          path: |
+            dist/winery_nft.wasm
+            dist/winery_nft.wasm.sha256
+          if-no-files-found: error
+          retention-days: 30
