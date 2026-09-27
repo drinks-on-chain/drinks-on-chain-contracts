@@ -102,3 +102,14 @@ Con *Consecutive*, `mint_batch` escribe las mismas entradas para 1 que para 32 0
 | P-SC-3 | Revisar el coste por NFT del doc 06 §9 con *Consecutive* (DS-14) | Medir en testnet (B.3) |
 | P-SC-4 | Claves que debe extender el trabajo de TTL (CHN-13) (DS-12) | Las de DS-12 |
 | P-SC-5 | Formato del identificador de lote en `mint_batch` (DS-07) | Código legible del lote |
+
+## Respuestas de la coordinación (27-09-2026)
+
+| ID | Respuesta |
+|---|---|
+| P-SC-1 | Se adopta la recomendación: la plataforma (operador) puede pausar; solo la bodega (admin) reanuda |
+| P-SC-2 | Pendiente del usuario (pregunta U-3 del plan maestro). Hasta entonces, no actualizable; se decide en B.4 |
+| P-SC-3 | Medir en testnet en B.3 (Ola 2) y proponer la corrección del doc 06 §9 con las cifras reales |
+| P-SC-4 | Las claves de DS-12; el trabajo CHN-13 del backend (Ola 3) las recorre |
+| P-SC-5 | Código legible del lote (el mismo que imprime el ERP), máximo 64 bytes |
+

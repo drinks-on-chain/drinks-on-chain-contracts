@@ -18,7 +18,7 @@ Detalle de `docs-back/08-roadmap.md` §6 y de las tareas SC del plan maestro (`P
 - [x] Eventos para el indexador (`lot_minted`, `base_uri_updated` + los estándar) documentados en `docs/funciones.md` · 2026-09-27
 - [x] 44 pruebas nativas (felices, roles no autorizados, firmas ausentes, pausa, token inexistente, quema doble, transferencia de quemado, límites de `mint_batch`) y 2 sobre el WASM (recorrido y costes) · 2026-09-27
 - [x] WASM optimizado: 29 188 bytes · costes estimados en `docs/costes.md` · 2026-09-27
-- [ ] Respuestas de la coordinación a P-SC-1…P-SC-5 (`docs/decisiones.md`)
+- [x] Respuestas de la coordinación a P-SC-1…P-SC-5 (`docs/decisiones.md`) · 2026-09-27 (P-SC-2 queda con el usuario)
 
 ## B.3 · Testnet (O2-SC-1, Ola 2)
 
