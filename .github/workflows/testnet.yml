@@ -1,0 +1,91 @@
+name: Testnet
+
+# Despliegue (idempotente) y prueba de ida y vuelta de los contratos de las
+# bodegas registradas en deployments/testnet.json. Manual: consume XLM de
+# testnet (Friendbot) y deja lotes de prueba en los contratos de demostración.
+# Las claves llegan de los secretos del repo como variables de entorno y
+# nunca se escriben en archivos ni en el informe.
+on:
+  workflow_dispatch:
+    inputs:
+      bodegas:
+        description: Alias separados por espacios (vacío = todas las registradas)
+        required: false
+        default: ""
+      cantidad:
+        description: Tokens del lote de prueba (1–32000)
+        required: false
+        default: "3"
+      entregas:
+        description: Tokens que se entregan al consumidor de prueba
+        required: false
+        default: "1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: testnet
+  cancel-in-progress: false
+
+env:
+  CARGO_TERM_COLOR: always
+  STELLAR_CLI_VERSION: 28.1.0
+
+jobs:
+  testnet:
+    name: despliegue · ida y vuelta
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Toolchain de Rust (rust-toolchain.toml)
+        run: rustup toolchain install
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Instalar stellar-cli
+        run: |
+          curl -fsSL "https://github.com/stellar/stellar-cli/releases/download/v${STELLAR_CLI_VERSION}/stellar-cli-${STELLAR_CLI_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/stellar" --version
+
+      - name: Construir el WASM optimizado
+        run: |
+          stellar contract build --package winery-nft --locked --out-dir dist
+          local_hash="$(sha256sum dist/winery_nft.wasm | cut -d' ' -f1)"
+          registrado="$(jq -r '.wasm.hash' deployments/testnet.json)"
+          echo "WASM local: $local_hash · registrado en testnet: $registrado"
+          if [ "$local_hash" != "$registrado" ]; then
+            echo "::warning::El WASM de este commit ($local_hash) no es el registrado en deployments/testnet.json ($registrado): se subirá el código nuevo, pero los contratos existentes no cambian (no son actualizables)."
+          fi
+
+      - name: Despliegue e ida y vuelta
+        env:
+          TESTNET_DEPLOYER_SECRET: ${{ secrets.TESTNET_DEPLOYER_SECRET }}
+          TESTNET_PLATFORM_SECRET: ${{ secrets.TESTNET_PLATFORM_SECRET }}
+          TESTNET_WINERY_ALTOS_DE_CALAMUCHITA_SECRET: ${{ secrets.TESTNET_WINERY_ALTOS_DE_CALAMUCHITA_SECRET }}
+          TESTNET_WINERY_DESTILERIA_CINTI_VIEJO_SECRET: ${{ secrets.TESTNET_WINERY_DESTILERIA_CINTI_VIEJO_SECRET }}
+          BODEGAS: ${{ inputs.bodegas }}
+          CANTIDAD: ${{ inputs.cantidad }}
+          ENTREGAS: ${{ inputs.entregas }}
+        run: |
+          scripts/testnet.sh --bodegas "$BODEGAS" --cantidad "$CANTIDAD" --entregas "$ENTREGAS" \
+            --informe informe-testnet
+
+      - name: Resumen
+        if: always()
+        run: |
+          if [ -f informe-testnet/README.md ]; then
+            cat informe-testnet/README.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: informe-testnet-${{ github.run_id }}
+          path: informe-testnet/
+          if-no-files-found: warn
+          retention-days: 90

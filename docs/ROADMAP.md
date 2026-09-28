@@ -22,11 +22,14 @@ Detalle de `docs-back/08-roadmap.md` §6 y de las tareas SC del plan maestro (`P
 
 ## B.3 · Testnet (O2-SC-1, Ola 2)
 
-- [ ] Cuenta de despliegue de testnet (Friendbot) en la configuración local o en el custodio, nunca en el repo
-- [ ] Código subido una vez; hash en `deployments/testnet/wasm.json`
-- [ ] Script de despliegue por bodega revisado (`scripts/desplegar-bodega.sh`) y contrato de la bodega de demostración
-- [ ] Direcciones registradas por entorno (`deployments/<red>/`)
-- [ ] Prueba de ida y vuelta en testnet: emitir, transferir, quemar; costes reales frente a `docs/costes.md` y `docs-back/06` §9
+- [x] Cuentas de testnet (despliegue, plataforma, Altos de Calamuchita, Cinti Viejo) generadas en el contenedor y fondeadas con Friendbot; claves en la configuración local de `stellar keys` y como secretos de GitHub Actions, nunca en el repo (DS-15) · 2026-09-27
+- [x] Código subido una vez; hash y transacción en `deployments/testnet.json` · 2026-09-27
+- [x] Script de despliegue por bodega idempotente (`scripts/desplegar-bodega.sh`, sal determinista, DS-16) y contratos de las dos bodegas de demostración · 2026-09-27
+- [x] Direcciones de contratos, hash del código y cuentas públicas registradas por red (`deployments/testnet.json`) · 2026-09-27
+- [x] Prueba de ida y vuelta en testnet (`scripts/ida-y-vuelta.sh`): emitir, entregar, `token_uri`, `total_minted`, quemar y eventos; enlaces al explorador en `docs/testnet.md` · 2026-09-27
+- [x] Costes reales medidos (comisión y renta) y estimación para mainnet en `docs/costes.md`; propuesta de corrección del doc 06 §9 (P-SC-3) · 2026-09-27
+- [ ] Workflow manual «Testnet» (`.github/workflows/testnet.yml`): escrito y en `dev`; la primera ejecución necesita el archivo en `main` (GitHub solo ofrece `workflow_dispatch` desde la rama por defecto)
+- [x] Documentación: `docs/testnet.md` (desplegar una bodega nueva, direcciones, verificación, lo que necesita el backend) · 2026-09-27
 
 ## B.4 · Revisión y mainnet (O6-SC-1, Ola 6)
 
