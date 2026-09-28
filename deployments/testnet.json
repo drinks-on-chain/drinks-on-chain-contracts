@@ -1,0 +1,49 @@
+{
+  "network": "testnet",
+  "network_passphrase": "Test SDF Network ; September 2015",
+  "rpc_url": "https://soroban-testnet.stellar.org",
+  "explorer": "https://stellar.expert/explorer/testnet",
+  "wasm": {
+    "hash": "eb9f75b2a17117cab0c44d318ffd2f0f7642c488f56b31167998795ce22089d8",
+    "size_bytes": 29188,
+    "uploaded_at": "2026-09-27T23:24:57Z",
+    "upload_tx": "07c02acca56eea7aeb870234280709c409f3db60f6dd527ecba74be14aa8a96a"
+  },
+  "accounts": {
+    "deployer": "GDW3Y44FGL26ZGUKNICDFSPNLKO375WI6HT742XTPHKZQ7NIAL62OI6E",
+    "platform_operator": "GDN3CAF7KKD72Q5EPDYKBK2MCCANJWQ344OZKSL6GAYULDCOPMQZ4SB6",
+    "winery_admins": {
+      "altos-de-calamuchita": "GADMLY63WAUFDTW3IVCWNFYSYUOGJMN6UL7AALJMQU443AZOA5Z3G563",
+      "destileria-cinti-viejo": "GBCHIELZEVH4ZGBD5XCPMXX7NS4P2DWDJWGQVEBCVD2ADTPDSDXIEVN5"
+    },
+    "demo_consumer": "GAQQH2UNAJHLRGVVKKWNIWV4WQMACAEPODZ7D2VWAOJLAR2IT6NCQAVP"
+  },
+  "wineries": {
+    "altos-de-calamuchita": {
+      "contract": "CDUUCPA5JQVDP6EEI3CWT5MS4SGEPD2WS2SN6XSZCGPATTJSO2SZQS6M",
+      "explorer": "https://stellar.expert/explorer/testnet/contract/CDUUCPA5JQVDP6EEI3CWT5MS4SGEPD2WS2SN6XSZCGPATTJSO2SZQS6M",
+      "admin": "GADMLY63WAUFDTW3IVCWNFYSYUOGJMN6UL7AALJMQU443AZOA5Z3G563",
+      "operator": "GDN3CAF7KKD72Q5EPDYKBK2MCCANJWQ344OZKSL6GAYULDCOPMQZ4SB6",
+      "name": "Bodega Altos de Calamuchita",
+      "symbol": "ALTOS",
+      "base_uri": "https://api.drinks-on-chain.test/v1/public/nft/altos-de-calamuchita/",
+      "wasm_hash": "eb9f75b2a17117cab0c44d318ffd2f0f7642c488f56b31167998795ce22089d8",
+      "salt": "3609864b7a0aa39f331d93d0e5aa254f192c3a656f100675a087c209ef237574",
+      "deploy_tx": "c4fa892045b64341576e0c67e4a14e4e74f8303d135fd439ddf3b0c2efca78a6",
+      "deployed_at": "2026-09-27T23:38:21Z"
+    },
+    "destileria-cinti-viejo": {
+      "contract": "CC5M35BGIVRDZ5HEXMORAFO2D6RGOARJ7MLOGU56JCX5J5C66HFJKDFF",
+      "explorer": "https://stellar.expert/explorer/testnet/contract/CC5M35BGIVRDZ5HEXMORAFO2D6RGOARJ7MLOGU56JCX5J5C66HFJKDFF",
+      "admin": "GBCHIELZEVH4ZGBD5XCPMXX7NS4P2DWDJWGQVEBCVD2ADTPDSDXIEVN5",
+      "operator": "GDN3CAF7KKD72Q5EPDYKBK2MCCANJWQ344OZKSL6GAYULDCOPMQZ4SB6",
+      "name": "Destilería Cinti Viejo",
+      "symbol": "CINTI",
+      "base_uri": "https://api.drinks-on-chain.test/v1/public/nft/destileria-cinti-viejo/",
+      "wasm_hash": "eb9f75b2a17117cab0c44d318ffd2f0f7642c488f56b31167998795ce22089d8",
+      "salt": "5a4e99b64e73c5cd7e1d489121a3bd60ef917291a4fb6aafc34abe9d81cbe76b",
+      "deploy_tx": "67704449f4750f092d617327b7ec86a0b79fe746b39885681acb3c4469f5a9fe",
+      "deployed_at": "2026-09-27T23:42:26Z"
+    }
+  }
+}
