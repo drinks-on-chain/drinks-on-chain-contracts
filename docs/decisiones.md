@@ -1,6 +1,6 @@
 # Decisiones del repositorio de contratos
 
-> Versión 1 · 27-09-2026 · Tarea O1-SC-1 (pasos B.1 y B.2 de `docs-back/08-roadmap.md` §6). Las decisiones de producto viven en `docs-back/04-decisiones-y-preguntas.md` (A-01, A-02, A-22, A-28) y el diseño en `docs-back/06-tokens-billeteras-y-cadena.md`. Aquí solo lo que se decidió **al implementar**, con lo que difiere del doc 06 marcado como pregunta para la coordinación. Nada de esto modifica `docs-back`.
+> Versión 2 · 27-09-2026 · Tareas O1-SC-1 (pasos B.1 y B.2 de `docs-back/08-roadmap.md` §6) y O2-SC-1 (B.3, testnet: DS-15 a DS-19, correcciones en DS-12 y DS-14). Las decisiones de producto viven en `docs-back/04-decisiones-y-preguntas.md` (A-01, A-02, A-22, A-28) y el diseño en `docs-back/06-tokens-billeteras-y-cadena.md`. Aquí solo lo que se decidió **al implementar**, con lo que difiere del doc 06 marcado como pregunta para la coordinación. Nada de esto modifica `docs-back`.
 
 ## DS-01 · OpenZeppelin Stellar Contracts 0.7.2 y soroban-sdk 26.1.1
 
@@ -80,7 +80,7 @@ No se incluye el módulo `upgradeable` de OpenZeppelin: el código de una bodega
 ## DS-12 · Vida de los datos (TTL)
 
 - La **instancia** (metadatos, admin, pausa, contador) se extiende a 120 días en cada escritura si le quedan menos de 90.
-- OpenZeppelin extiende a **30 días** las entradas de dueño, cubos de propiedad, tokens quemados y saldos cada vez que se leen o escriben; los roles, a 90 días.
+- OpenZeppelin extiende a **30 días** las entradas de dueño, cubos de propiedad, tokens quemados y saldos cada vez que **se leen** (no al escribirlas: una entrada recién escrita vive el TTL mínimo de la red, 7 días en testnet y 120 en mainnet, hasta que otra llamada la lee; medido en testnet en B.3, ver [testnet.md](testnet.md) §6); los roles, a 90 días.
 - Lo demás lo cubre el trabajo programado del backend (CHN-13). **Pregunta P-SC-4**: el doc 06 §9 habla de "renta de 120 días" por NFT; con *Consecutive* un token sin vender no tiene entrada propia (se infiere del final del lote), y las entradas `Owner(id)`, `OwnershipBucket(i)`, `BurnedToken(id)` y `Balance(dirección)` son las que el trabajo de extensión debe recorrer.
 
 ## DS-13 · Límites
@@ -93,6 +93,33 @@ No se incluye el módulo `upgradeable` de OpenZeppelin: el código de una bodega
 
 Con *Consecutive*, `mint_batch` escribe las mismas entradas para 1 que para 32 000 tokens; el coste por botella aparece en la **primera transferencia** de cada token (nueva entrada de dueño). El doc 06 §9 estima ≈ 0,05 XLM por NFT emitido; las mediciones locales (ver [costes.md](costes.md)) dan del orden de 0,14–0,44 XLM por **lote** y 0,2–0,3 XLM por entrega, pero con tarifas de referencia del SDK y renta calculada desde el TTL mínimo, así que sobrestiman el caso real. Medir en testnet en B.3 y actualizar el doc 06 §9 si procede.
 
+**Medido en B.3** ([costes.md](costes.md)): confirmado que la emisión cuesta por lote (3 y 1 000 tokens, 0,139 XLM; el segundo lote de un contrato, 0,007 XLM). En mainnet se estiman ≈ 0,02–0,05 XLM por entrega y ≈ 0,02 por quema (más que en el doc 06), ≈ 24 XLM por subir el código (el doc dice 1,5) y un coste nuevo: mantener vivo el código, ≈ 74 XLM/año compartidos (pregunta P-SC-6).
+
+## DS-15 · Cuentas y claves de testnet
+
+- Cuatro papeles: despliegue (paga la subida del código y la creación de contratos), operaciones de la plataforma (`operator`), una cuenta por bodega (admin y `minter`) y un consumidor de prueba. Todas fondeadas con Friendbot salvo el consumidor, que no se fondea (A-28): su clave se genera en una configuración temporal y se descarta, porque nunca firma.
+- Las claves se generan dentro del contenedor y viven en la configuración local de `stellar keys` (volumen Docker `doc-contracts-stellar`, fuera del repo), como prevé el `CLAUDE.md` del repo, y como **secretos de GitHub Actions** (`TESTNET_DEPLOYER_SECRET`, `TESTNET_PLATFORM_SECRET`, `TESTNET_WINERY_<ALIAS>_SECRET`), copiadas por una tubería de `stellar keys show` a `gh secret set` (`scripts/secretos-github.sh`).
+- Los scripts no reciben claves: firman con la variable `STELLAR_ACCOUNT` de stellar-cli, que admite un nombre de identidad (local) o una clave (CI). Así la clave nunca va como argumento de un proceso ni se escribe en disco en la CI.
+- Si la coordinación prefiere que la única copia esté en GitHub, basta `docker volume rm doc-contracts-stellar` (se pierde la posibilidad de operar desde la máquina local; la CI sigue funcionando).
+
+## DS-16 · Despliegue idempotente con sal determinista y registro por red
+
+- Un archivo por red, `deployments/<red>.json` (en lugar de `deployments/testnet/wasm.json` + uno por bodega que proponía el borrador): red, código (`hash`, tamaño, transacción de subida), cuentas públicas y contratos por bodega. Solo datos públicos.
+- La dirección de cada contrato se deriva de la cuenta de despliegue y de `sha256("drinks-on-chain/winery-nft/<alias>/<hash del WASM>")`. Repetir el despliegue no crea un segundo contrato y, tras un reinicio de testnet, lo recrea en la misma dirección. Cambiar el código da otra dirección; el script no lo hace sin `--nueva-version` (DS-11).
+- El WASM que construye la CI es idéntico bit a bit al del contenedor local (mismo hash), así que la CI reconoce el código ya subido.
+
+## DS-17 · Bodegas de demostración
+
+Alias = *slug* de la plataforma (`altos-de-calamuchita`, `destileria-cinti-viejo`), nombre comercial ("Bodega Altos de Calamuchita", "Destilería Cinti Viejo") y símbolos `ALTOS` y `CINTI`. URI base **provisional** `https://api.drinks-on-chain.test/v1/public/nft/<alias>/` (dominio reservado, no resuelve) hasta que el backend publique la ruta de metadatos (Ola 3); se cambia con `set_token_uri_base`. Lotes de prueba con código `DEMO-<símbolo>-<fecha>` (P-SC-5: código legible).
+
+## DS-18 · En la prueba, cada papel paga su transacción
+
+La bodega es origen (y paga) de `mint_batch`; la plataforma, de `operator_transfer` y `redeem_burn`. El doc 06 §5 quiere que pague siempre la cuenta de operaciones: para eso el backend firmará la entrada de autorización de Soroban con la clave de la bodega y el sobre con la de operaciones. stellar-cli 28.1 no lo permite en un solo comando (`--sign-with-key` sustituye la firma del sobre: `TxBadAuth`), así que queda para el firmante del backend (Ola 3). El importe de la comisión no depende de quién la pague.
+
+## DS-19 · Nombres de los scripts
+
+Los scripts siguen el español del repo (`verificar.sh`, `docker.sh`): `desplegar-bodega.sh` (el borrador de B.2, ya documentado), `ida-y-vuelta.sh` (la tarea lo llamaba `roundtrip.*`), `cuentas-testnet.sh`, `secretos-github.sh` y `testnet.sh` (lo que ejecuta la CI). Las claves de `deployments/*.json` van en inglés, como los identificadores de código.
+
 ## Preguntas abiertas para la coordinación
 
 | # | Pregunta | Propuesta |
@@ -102,6 +129,8 @@ Con *Consecutive*, `mint_batch` escribe las mismas entradas para 1 que para 32 0
 | P-SC-3 | Revisar el coste por NFT del doc 06 §9 con *Consecutive* (DS-14) | Medir en testnet (B.3) |
 | P-SC-4 | Claves que debe extender el trabajo de TTL (CHN-13) (DS-12) | Las de DS-12 |
 | P-SC-5 | Formato del identificador de lote en `mint_batch` (DS-07) | Código legible del lote |
+| P-SC-6 | Mantener vivo el código en mainnet cuesta ≈ 74 XLM/año (renta por tamaño en memoria, ≈ 145 KB) y lo paga la transacción que extiende una instancia cuando al código le quedan < 90 días ([costes.md](costes.md)) | Que el trabajo de TTL (CHN-13) extienda el código por su cuenta (`stellar contract extend --wasm-hash`) y presupuestarlo como coste fijo de la plataforma; revisar en B.4 si reducir el WASM compensa |
+| P-SC-3 (seguimiento) | Corregir el doc 06 §9 con las cifras de [costes.md](costes.md) | Sustituir la tabla por la estimación de mainnet de costes.md |
 
 ## Respuestas de la coordinación (27-09-2026)
 
