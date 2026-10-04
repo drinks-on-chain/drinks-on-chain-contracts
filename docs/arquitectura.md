@@ -25,7 +25,7 @@ flowchart LR
   C2 -->|"eventos"| IDX
 ```
 
-- El **código** (`winery_nft.wasm`) se sube una vez por versión; cada bodega es una **instancia** con su constructor (`scripts/desplegar-bodega.sh`, paso B.3).
+- El **código** (`winery_nft.wasm`) se sube una vez por versión; cada bodega es una **instancia** con su constructor (`scripts/desplegar-bodega.sh`; desplegadas en testnet, ver [testnet.md](testnet.md)).
 - La **bodega** es la administradora y la emisora: aparece como origen de sus NFT (A-02). Su clave la custodia el backend (doc 06 §8).
 - La **plataforma** es la operadora: entrega al comprador y quema al canjear. Las direcciones de los consumidores son `G…` custodiales derivadas (SEP-0005) y **sin fondear** (A-28): nunca firman; el contrato no les pide nada.
 - Todas las comisiones las paga la cuenta de operaciones (o la de despliegue).
@@ -72,10 +72,17 @@ contracts/winery-nft/      el contrato
   src/test.rs              pruebas unitarias (nativas)
   src/test_wasm.rs         pruebas sobre el WASM compilado + informe de costes
 scripts/verificar.sh       puertas locales (= CI)
-scripts/docker.sh          las mismas puertas en Docker (Windows)
-scripts/desplegar-bodega.sh  borrador de despliegue por bodega (B.3)
+scripts/docker.sh          cualquier script en Docker (Windows): Rust, stellar-cli, jq
+scripts/cuentas-testnet.sh cuentas de testnet (Friendbot) en `stellar keys`
+scripts/secretos-github.sh claves de testnet → secretos de GitHub Actions (por tubería)
+scripts/desplegar-bodega.sh  subida del código y contrato de una bodega (idempotente)
+scripts/ida-y-vuelta.sh    emitir, entregar, quemar, eventos y costes reales
+scripts/testnet.sh         despliegue + ida y vuelta de todas las bodegas (workflow «Testnet»)
+scripts/lib/red.sh         funciones comunes de red (RPC, costes, firmas por papel)
+deployments/testnet.json   direcciones públicas por red
 docs/                      esta documentación
 .github/workflows/ci.yml   CI
+.github/workflows/testnet.yml  despliegue e ida y vuelta en testnet (manual)
 ```
 
 ## Red y versiones
