@@ -31,6 +31,16 @@ Detalle de `docs-back/08-roadmap.md` §6 y de las tareas SC del plan maestro (`P
 - [ ] Workflow manual «Testnet» (`.github/workflows/testnet.yml`): escrito y en `dev`; la primera ejecución necesita el archivo en `main` (GitHub solo ofrece `workflow_dispatch` desde la rama por defecto)
 - [x] Documentación: `docs/testnet.md` (desplegar una bodega nueva, direcciones, verificación, lo que necesita el backend) · 2026-09-27
 
+## Soporte a la integración del backend (O3-SC-1, Ola 3)
+
+- [x] Firma separada verificada en una red local en el protocolo 29 con el SDK de JavaScript 17.2.1: autoriza la bodega (`authorizeEntry`), origina y paga operaciones, en `mint_batch`, `set_token_uri_base` y `unpause`; *fee-bump* probado como alternativa; versión del SDK necesaria determinada (DS-20) · 2026-10-08
+- [x] El WASM de testnet (`eb9f75b2…89d8`) se sube y se ejecuta sin cambios en el protocolo 29 · 2026-10-08
+- [x] Script reproducible `integracion/verificar.mjs` (claves al vuelo, solo red local) y red local fijada `integracion/red-local.sh` (DS-22); job «integración» en la CI · 2026-10-08
+- [x] Ejemplos reales de los 14 eventos (`getEvents` en XDR y decodificados) en `integracion/eventos/` (DS-23) · 2026-10-08
+- [x] Claves `ScVal` de TTL confirmadas con `getLedgerEntries` (`integracion/claves-ttl.json`), corrección de las entradas `Owner` (DS-12) y procedimiento de extensión del código (P-SC-6) en `docs/testnet.md` §6 · 2026-10-08
+- [x] Artefacto `artefactos/winery_nft.wasm` + SHA-256, idéntico al construido y descargable sin token (DS-21) · 2026-10-08
+- [x] `lot` de `mint_batch` = referencia estable del lote (P-SC-5 actualizada, DS-07) y contratos por entorno con su sal (S-2) documentados · 2026-10-08
+
 ## B.4 · Revisión y mainnet (O6-SC-1, Ola 6)
 
 - [ ] Decisión sobre actualización del contrato (P-SC-2)

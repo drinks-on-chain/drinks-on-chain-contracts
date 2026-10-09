@@ -1,6 +1,6 @@
 # Funciones, roles, eventos y errores de `winery-nft`
 
-> Versión 1 · 27-09-2026. Referencia para el backend (firmante e indexador). Código en `contracts/winery-nft/src/`.
+> Versión 2 · 08-10-2026. Referencia para el backend (firmante e indexador). Código en `contracts/winery-nft/src/`. Un ejemplo real de cada evento (XDR del RPC y decodificado) en [`integracion/eventos/`](../integracion/eventos/).
 
 ## Roles
 
@@ -17,7 +17,7 @@ Cada función protegida recibe la dirección que actúa como **último parámetr
 | Función | Quién | Pausa | Qué hace | Eventos |
 |---|---|---|---|---|
 | `__constructor(admin, operator, name, symbol, base_uri)` | Quien despliega | — | Guarda metadatos, fija el admin, da `minter` al admin y `operator` al operador. Falla si `admin == operator` | `role_granted` ×2 |
-| `mint_batch(to, amount, lot, minter) -> u32` | `minter` | Bloqueada | Emite `amount` (1–32 000) tokens con ids consecutivos a `to`; devuelve el último id | `consecutive_mint`, `lot_minted` |
+| `mint_batch(to, amount, lot, minter) -> u32` | `minter` | Bloqueada | Emite `amount` (1–32 000) tokens con ids consecutivos a `to`; devuelve el último id. `lot` es la referencia estable del lote, `{lotPrefix}-L{año}-{NNN}` (1–64 bytes; DS-07) | `consecutive_mint`, `lot_minted` |
 | `operator_transfer(from, to, token_id, operator)` | `operator` | Bloqueada | Mueve el token de `from` (debe ser su dueño) a `to` sin la firma de `from` | `transfer` |
 | `redeem_burn(token_id, operator)` | `operator` | Bloqueada | Quema el token, sea quien sea su dueño | `burn` (con el dueño) |
 | `set_token_uri_base(base_uri)` | admin | Permitida | Cambia la URI base (≤ 200 bytes) | `base_uri_updated` |
@@ -48,7 +48,7 @@ Cada función protegida recibe la dirección que actúa como **último parámetr
 
 ## Eventos que lee el indexador
 
-Formato de Soroban (`#[contractevent]`): el primer *topic* es el nombre del evento en `snake_case`.
+Formato de Soroban (`#[contractevent]`): el primer *topic* es el nombre del evento en `snake_case` (símbolo) y los datos son siempre un **mapa** de símbolo a valor con las claves en orden alfabético (vacío, `{}`, en `paused` y `unpaused`). Direcciones como `Address`, ids y ledgers como `u32`, `lot` y `base_uri` como `String`, roles como `Symbol`.
 
 | Evento | Topics | Datos | Cuándo |
 |---|---|---|---|
@@ -58,9 +58,10 @@ Formato de Soroban (`#[contractevent]`): el primer *topic* es el nombre del even
 | `burn` | `from` | `token_id` | `redeem_burn` |
 | `approve` | `approver`, `token_id` | `approved`, `live_until_ledger` | `approve` |
 | `approve_for_all` | `owner` | `operator`, `live_until_ledger` | `approve_for_all` |
-| `paused` / `unpaused` | — | — | `pause` / `unpause` |
+| `paused` / `unpaused` | — | — (mapa vacío) | `pause` / `unpause` |
 | `role_granted` / `role_revoked` | `role`, `account` | `caller` | constructor, `grant_role`, `revoke_role`, `renounce_role` |
-| `admin_transfer_initiated` / `admin_transfer_completed` | admin actual / nuevo | nuevo admin y ledger / admin anterior | transferencia del admin |
+| `admin_transfer_initiated` / `admin_transfer_completed` | admin actual / nuevo | `new_admin`, `live_until_ledger` / `previous_admin` | transferencia del admin |
+| `role_admin_changed` | `role` | `previous_admin_role` (símbolo vacío si no había), `new_admin_role` | `set_role_admin` |
 | `base_uri_updated` | — | `base_uri` | `set_token_uri_base` |
 
 Para distinguir una entrega de la plataforma de una transferencia del dueño, el indexador cruza el `transfer` con la transacción (función invocada) o con la intención registrada por el firmante.
