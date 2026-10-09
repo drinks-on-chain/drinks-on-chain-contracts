@@ -59,6 +59,11 @@ jobs:
           cargo clippy --all-targets --features wasm-tests -- -D warnings
           cargo test -p winery-nft --features wasm-tests test_wasm
 
+      - name: Artefacto versionado (artefactos/winery_nft.wasm = WASM construido)
+        run: |
+          cmp dist/winery_nft.wasm artefactos/winery_nft.wasm
+          (cd artefactos && sha256sum -c winery_nft.wasm.sha256)
+
       - name: Tamaño y hash
         run: |
           cd dist
@@ -80,3 +85,40 @@ jobs:
             dist/winery_nft.wasm.sha256
           if-no-files-found: error
           retention-days: 30
+
+  integracion:
+    # Red local stellar/quickstart en el protocolo de testnet + SDK de
+    # JavaScript: firma separada (DS-18), eventos y claves de TTL sobre el
+    # WASM versionado. Claves generadas al vuelo; no usa secretos.
+    name: integración · red local · SDK de JS
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: integracion/package-lock.json
+
+      - name: Red local (Core + RPC + Friendbot)
+        run: integracion/red-local.sh arrancar
+
+      - name: Dependencias
+        working-directory: integracion
+        run: npm ci --no-audit --no-fund
+
+      - name: Firma separada, eventos y TTL
+        working-directory: integracion
+        env:
+          ESCRIBIR_EJEMPLOS: "0"
+        run: node verificar.mjs
+
+      - name: Registro de la red (si falla)
+        if: failure()
+        run: docker logs --tail 80 doc-red-local
+
+      - name: Parar la red
+        if: always()
+        run: integracion/red-local.sh parar
