@@ -1,0 +1,29 @@
+{
+  "evento": "admin_transfer_completed",
+  "rpc": {
+    "type": "contract",
+    "ledger": 54,
+    "ledgerClosedAt": "2026-10-09T03:25:26Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000231928238080-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "e99f37b30bba226537150de9b2e311eec90f49c75ca868b03a3ebc13a5319339",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAABhhZG1pbl90cmFuc2Zlcl9jb21wbGV0ZWQ=",
+      "AAAAEgAAAAAAAAAA+1U7s+9muhkhUYv/uIALZ86IGAOtLFSchrxzU9Ngr9g="
+    ],
+    "value": "AAAAEQAAAAEAAAABAAAADwAAAA5wcmV2aW91c19hZG1pbgAAAAAAEgAAAAAAAAAAPoiiKp9w3sVGx8PPVeyiBIRRNwxE6X5thwL71ixbN5E="
+  },
+  "decodificado": {
+    "topics": [
+      "admin_transfer_completed",
+      "GD5VKO5T55TLUGJBKGF77OEABNT45CAYAOWSYVE4Q26HGU6TMCX5QHCF"
+    ],
+    "value": {
+      "previous_admin": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+    }
+  },
+  "otros": []
+}

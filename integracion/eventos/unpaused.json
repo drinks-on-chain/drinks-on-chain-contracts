@@ -1,0 +1,25 @@
+{
+  "evento": "unpaused",
+  "rpc": {
+    "type": "contract",
+    "ledger": 33,
+    "ledgerClosedAt": "2026-10-09T03:25:05Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000141733924864-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "02cde09a5aac1f1db5121c98713f747ff5023331178f0799aef0559e9a162f88",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAAAh1bnBhdXNlZA=="
+    ],
+    "value": "AAAAEQAAAAEAAAAA"
+  },
+  "decodificado": {
+    "topics": [
+      "unpaused"
+    ],
+    "value": {}
+  },
+  "otros": []
+}

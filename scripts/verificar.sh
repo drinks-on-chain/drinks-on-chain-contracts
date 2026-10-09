@@ -24,6 +24,12 @@ paso "simulación del despliegue sobre el WASM"
 cargo clippy --all-targets --features wasm-tests -- -D warnings
 cargo test -p winery-nft --features wasm-tests test_wasm
 
+paso "artefacto versionado (artefactos/winery_nft.wasm = WASM construido)"
+# El backend descarga artefactos/winery_nft.wasm para su red local: debe ser,
+# bit a bit, lo que construye este commit, y su .sha256 debe decir la verdad.
+cmp dist/winery_nft.wasm artefactos/winery_nft.wasm
+(cd artefactos && sha256sum -c winery_nft.wasm.sha256)
+
 paso "resultado"
 ls -l dist/winery_nft.wasm
 sha256sum dist/winery_nft.wasm

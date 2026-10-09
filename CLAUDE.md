@@ -11,4 +11,5 @@ Contratos Soroban (Stellar) de Drinks on Chain: `winery-nft`, un NFT por botella
 - Las funciones propias (`contracts/winery-nft/src/contract.rs`) son la única parte sin auditar: cortas, sin `unwrap` fuera de pruebas, errores propios desde 3000.
 - Si algo difiere de `docs-back/06`, se anota en `docs/decisiones.md` como decisión o pregunta; `docs-back` no se toca desde aquí.
 - Nunca claves secretas en el repo, en commits ni en los informes. Testnet con cuentas de Friendbot en la configuración local de `stellar keys`; mainnet solo tras la revisión externa (B.4).
+- Si cambia el WASM, copia `dist/winery_nft.wasm` a `artefactos/` y regenera su `.sha256` (DS-21): las puertas lo comparan. `integracion/` (red local + SDK de JS) solo se ejecuta contra una red local y con claves generadas al vuelo; los JSON de `integracion/eventos/` se regeneran con `node verificar.mjs`, no se editan.
 - Marca las casillas de `docs/ROADMAP.md` (`- [x] … · fecha`) al terminar cada paso.

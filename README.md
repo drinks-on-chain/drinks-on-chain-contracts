@@ -15,6 +15,8 @@ Contratos Soroban (Stellar) de **Drinks on Chain**: un NFT por botella y **un co
 | [docs/testnet.md](docs/testnet.md) | Contratos desplegados en testnet, cómo desplegar una bodega, verificación, lo que necesita el backend |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Pasos B.1–B.4 |
 | [deployments/testnet.json](deployments/testnet.json) | Direcciones públicas en testnet (código, contratos, cuentas) |
+| [artefactos/](artefactos/) | `winery_nft.wasm` optimizado y su SHA-256 (el de testnet), para la red local del backend |
+| [integracion/](integracion/) | Red local `stellar/quickstart` y verificación con el SDK de JavaScript: firma separada, ejemplos de eventos y claves de TTL |
 
 El diseño completo está en `docs-back/06-tokens-billeteras-y-cadena.md` (repo `drinks-on-chain-docsback`).
 

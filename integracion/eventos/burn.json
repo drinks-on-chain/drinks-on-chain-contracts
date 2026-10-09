@@ -1,0 +1,29 @@
+{
+  "evento": "burn",
+  "rpc": {
+    "type": "contract",
+    "ledger": 41,
+    "ledgerClosedAt": "2026-10-09T03:25:13Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000176093663232-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "a1c2d27915e63a90f7eedded40e561d49a288006f2e3915806ab715604518373",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAAARidXJu",
+      "AAAAEgAAAAAAAAAAVVfV+aaJDIccoG6KihfVCWCashWGCQyqqQBc1TCcmg4="
+    ],
+    "value": "AAAAEQAAAAEAAAABAAAADwAAAAh0b2tlbl9pZAAAAAMAAAAA"
+  },
+  "decodificado": {
+    "topics": [
+      "burn",
+      "GBKVPVPZU2EQZBY4UBXIVCQX2UEWBGVSCWDASDFKVEAFZVJQTSNA4DXM"
+    ],
+    "value": {
+      "token_id": 0
+    }
+  },
+  "otros": []
+}

@@ -1,0 +1,30 @@
+{
+  "evento": "role_admin_changed",
+  "rpc": {
+    "type": "contract",
+    "ledger": 47,
+    "ledgerClosedAt": "2026-10-09T03:25:19Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000201863467008-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "d29732dbccf00356f9c66911822b4627d34e44950ec8d725a0f1272e4a8818d9",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAABJyb2xlX2FkbWluX2NoYW5nZWQAAA==",
+      "AAAADwAAAAZtaW50ZXIAAA=="
+    ],
+    "value": "AAAAEQAAAAEAAAACAAAADwAAAA5uZXdfYWRtaW5fcm9sZQAAAAAADwAAAAhvcGVyYXRvcgAAAA8AAAATcHJldmlvdXNfYWRtaW5fcm9sZQAAAAAPAAAAAA=="
+  },
+  "decodificado": {
+    "topics": [
+      "role_admin_changed",
+      "minter"
+    ],
+    "value": {
+      "new_admin_role": "operator",
+      "previous_admin_role": ""
+    }
+  },
+  "otros": []
+}
