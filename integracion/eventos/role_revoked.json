@@ -1,0 +1,31 @@
+{
+  "evento": "role_revoked",
+  "rpc": {
+    "type": "contract",
+    "ledger": 43,
+    "ledgerClosedAt": "2026-10-09T03:25:15Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000184683597824-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "ced9c4f40e4a836562f49ea4331663099ae5795a5773e68c38df71f7a0599d3d",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAAAxyb2xlX3Jldm9rZWQ=",
+      "AAAADwAAAAZtaW50ZXIAAA==",
+      "AAAAEgAAAAAAAAAAGSCkGdGAjucJmkHYIQFjsVVqtNC1dQJPyyuioUAM46w="
+    ],
+    "value": "AAAAEQAAAAEAAAABAAAADwAAAAZjYWxsZXIAAAAAABIAAAAAAAAAAD6IoiqfcN7FRsfDz1XsogSEUTcMROl+bYcC+9YsWzeR"
+  },
+  "decodificado": {
+    "topics": [
+      "role_revoked",
+      "minter",
+      "GAMSBJAZ2GAI5ZYJTJA5QIIBMOYVK2VU2C2XKASPZMV2FIKABTR2YLJ7"
+    ],
+    "value": {
+      "caller": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+    }
+  },
+  "otros": []
+}

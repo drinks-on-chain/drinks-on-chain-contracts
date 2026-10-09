@@ -1,0 +1,65 @@
+{
+  "evento": "lot_minted",
+  "rpc": {
+    "type": "contract",
+    "ledger": 26,
+    "ledgerClosedAt": "2026-10-09T03:24:58Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000111669153792-0000000001",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "d2bfb6327b1c8802edb9e964accfe26d531123601791ec28e957c2dbeaf64dcf",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAAApsb3RfbWludGVkAAA=",
+      "AAAADgAAAA1DVkotTDIwMjYtMDA0AAAA",
+      "AAAAEgAAAAAAAAAAPoiiKp9w3sVGx8PPVeyiBIRRNwxE6X5thwL71ixbN5E="
+    ],
+    "value": "AAAAEQAAAAEAAAADAAAADwAAAA5maXJzdF90b2tlbl9pZAAAAAAAAwAAAAAAAAAPAAAADWxhc3RfdG9rZW5faWQAAAAAAAADAAAAYwAAAA8AAAAGbWludGVyAAAAAAASAAAAAAAAAAA+iKIqn3DexUbHw89V7KIEhFE3DETpfm2HAvvWLFs3kQ=="
+  },
+  "decodificado": {
+    "topics": [
+      "lot_minted",
+      "CVJ-L2026-004",
+      "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+    ],
+    "value": {
+      "first_token_id": 0,
+      "last_token_id": 99,
+      "minter": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+    }
+  },
+  "otros": [
+    {
+      "rpc": {
+        "type": "contract",
+        "ledger": 48,
+        "ledgerClosedAt": "2026-10-09T03:25:20Z",
+        "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+        "id": "0000000206158434304-0000000001",
+        "operationIndex": 0,
+        "transactionIndex": 1,
+        "txHash": "e0977ac42c7e587f9a51bb8f86d1116b1d86787359d9e953371b6b6a2c9e1905",
+        "inSuccessfulContractCall": true,
+        "topic": [
+          "AAAADwAAAApsb3RfbWludGVkAAA=",
+          "AAAADgAAAA1DVkotTDIwMjYtMDA2AAAA",
+          "AAAAEgAAAAAAAAAAPoiiKp9w3sVGx8PPVeyiBIRRNwxE6X5thwL71ixbN5E="
+        ],
+        "value": "AAAAEQAAAAEAAAADAAAADwAAAA5maXJzdF90b2tlbl9pZAAAAAAAAwAAAGQAAAAPAAAADWxhc3RfdG9rZW5faWQAAAAAAAADAAAAZgAAAA8AAAAGbWludGVyAAAAAAASAAAAAAAAAAA+iKIqn3DexUbHw89V7KIEhFE3DETpfm2HAvvWLFs3kQ=="
+      },
+      "decodificado": {
+        "topics": [
+          "lot_minted",
+          "CVJ-L2026-006",
+          "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+        ],
+        "value": {
+          "first_token_id": 100,
+          "last_token_id": 102,
+          "minter": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+        }
+      }
+    }
+  ]
+}

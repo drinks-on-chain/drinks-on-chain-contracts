@@ -1,0 +1,59 @@
+{
+  "nota": "Claves de ledger de un contrato winery-nft tal como las acepta getLedgerEntries (LedgerKey en XDR base64). Durabilidad persistente. Ledgers de 5 s: 17 280 por día.",
+  "contrato": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+  "forma": {
+    "instancia": "LedgerKey::ContractData { contract, key: ScVal::LedgerKeyContractInstance, durability: Persistent }",
+    "codigo": "LedgerKey::ContractCode { hash: wasmHash }",
+    "Owner(id)": "ContractData con key = ScVal::Vec([Symbol(\"Owner\"), U32(id)])",
+    "OwnershipBucket(i)": "ContractData con key = ScVal::Vec([Symbol(\"OwnershipBucket\"), U32(i)]); i = id / 3200",
+    "Balance(dirección)": "ContractData con key = ScVal::Vec([Symbol(\"Balance\"), Address(dirección)])",
+    "BurnedToken(id)": "ContractData con key = ScVal::Vec([Symbol(\"BurnedToken\"), U32(id)])"
+  },
+  "claves": {
+    "instancia": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABQAAAAB",
+      "diasDeVidaTrasElRecorrido": 120,
+      "diasDeVidaTrasExtender": 120
+    },
+    "codigo": {
+      "ledgerKeyXdr": "AAAAB+ufdbKhcRfKsMRNMY/9Lw92QsSI9WsxFnmYeVziIInY",
+      "diasDeVidaTrasElRecorrido": 120,
+      "diasDeVidaTrasExtender": 150
+    },
+    "Owner(2) · token vendido": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABAAAAABAAAAAgAAAA8AAAAFT3duZXIAAAAAAAADAAAAAgAAAAE=",
+      "diasDeVidaTrasElRecorrido": 7,
+      "diasDeVidaTrasExtender": 120
+    },
+    "Owner(1) · id anterior a la entrega": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABAAAAABAAAAAgAAAA8AAAAFT3duZXIAAAAAAAADAAAAAQAAAAE=",
+      "diasDeVidaTrasElRecorrido": 30,
+      "diasDeVidaTrasExtender": 120
+    },
+    "Owner(99) · último id del lote": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABAAAAABAAAAAgAAAA8AAAAFT3duZXIAAAAAAAADAAAAYwAAAAE=",
+      "diasDeVidaTrasElRecorrido": 30,
+      "diasDeVidaTrasExtender": 120
+    },
+    "OwnershipBucket(0) · ids 0–3199": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABAAAAABAAAAAgAAAA8AAAAPT3duZXJzaGlwQnVja2V0AAAAAAMAAAAAAAAAAQ==",
+      "diasDeVidaTrasElRecorrido": 30,
+      "diasDeVidaTrasExtender": 120
+    },
+    "Balance(bodega)": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABAAAAABAAAAAgAAAA8AAAAHQmFsYW5jZQAAAAASAAAAAAAAAAA+iKIqn3DexUbHw89V7KIEhFE3DETpfm2HAvvWLFs3kQAAAAE=",
+      "diasDeVidaTrasElRecorrido": 30,
+      "diasDeVidaTrasExtender": 120
+    },
+    "Balance(consumidor)": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABAAAAABAAAAAgAAAA8AAAAHQmFsYW5jZQAAAAASAAAAAAAAAABVV9X5pokMhxygboqKF9UJYJqyFYYJDKqpAFzVMJyaDgAAAAE=",
+      "diasDeVidaTrasElRecorrido": 30,
+      "diasDeVidaTrasExtender": 120
+    },
+    "BurnedToken(0)": {
+      "ledgerKeyXdr": "AAAABgAAAAHhfgFGp/zvmP8vpXfY0P4BWE8PpgUiR999jpBtnzIL5QAAABAAAAABAAAAAgAAAA8AAAALQnVybmVkVG9rZW4AAAAAAwAAAAAAAAAB",
+      "diasDeVidaTrasElRecorrido": 7,
+      "diasDeVidaTrasExtender": 7
+    }
+  }
+}

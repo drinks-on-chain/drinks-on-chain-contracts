@@ -1,0 +1,32 @@
+{
+  "evento": "approve",
+  "rpc": {
+    "type": "contract",
+    "ledger": 45,
+    "ledgerClosedAt": "2026-10-09T03:25:17Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000193273532416-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "cb059b9fd314efb697b82dec7b2db41c076fd4b9def67b3535007db6f4edb984",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAAAdhcHByb3ZlAA==",
+      "AAAAEgAAAAAAAAAAPoiiKp9w3sVGx8PPVeyiBIRRNwxE6X5thwL71ixbN5E=",
+      "AAAAAwAAAAE="
+    ],
+    "value": "AAAAEQAAAAEAAAACAAAADwAAAAhhcHByb3ZlZAAAABIAAAAAAAAAALeEgZvki+ZXYl8bjf5ADujDwhps9cK8bbRrspbLTIbXAAAADwAAABFsaXZlX3VudGlsX2xlZGdlcgAAAAAAAAMAAEOj"
+  },
+  "decodificado": {
+    "topics": [
+      "approve",
+      "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY",
+      1
+    ],
+    "value": {
+      "approved": "GC3YJAM34SF6MV3CL4NY37SAB3UMHQQ2NT24FPDNWRV3FFWLJSDNOP63",
+      "live_until_ledger": 17315
+    }
+  },
+  "otros": []
+}

@@ -1,0 +1,61 @@
+{
+  "evento": "transfer",
+  "rpc": {
+    "type": "contract",
+    "ledger": 37,
+    "ledgerClosedAt": "2026-10-09T03:25:09Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000158913794048-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "2c27941100f5fadf6bce4211bbae6bd96f639e0297df230b02bb840268f3fe1e",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAAAh0cmFuc2Zlcg==",
+      "AAAAEgAAAAAAAAAAPoiiKp9w3sVGx8PPVeyiBIRRNwxE6X5thwL71ixbN5E=",
+      "AAAAEgAAAAAAAAAAVVfV+aaJDIccoG6KihfVCWCashWGCQyqqQBc1TCcmg4="
+    ],
+    "value": "AAAAEQAAAAEAAAABAAAADwAAAAh0b2tlbl9pZAAAAAMAAAAA"
+  },
+  "decodificado": {
+    "topics": [
+      "transfer",
+      "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY",
+      "GBKVPVPZU2EQZBY4UBXIVCQX2UEWBGVSCWDASDFKVEAFZVJQTSNA4DXM"
+    ],
+    "value": {
+      "token_id": 0
+    }
+  },
+  "otros": [
+    {
+      "rpc": {
+        "type": "contract",
+        "ledger": 39,
+        "ledgerClosedAt": "2026-10-09T03:25:11Z",
+        "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+        "id": "0000000167503728640-0000000000",
+        "operationIndex": 0,
+        "transactionIndex": 1,
+        "txHash": "c1f006f9dc17c3b604d0527ca471a5eef78c1e909dc5fe76a80cc7d335dc11f9",
+        "inSuccessfulContractCall": true,
+        "topic": [
+          "AAAADwAAAAh0cmFuc2Zlcg==",
+          "AAAAEgAAAAAAAAAAPoiiKp9w3sVGx8PPVeyiBIRRNwxE6X5thwL71ixbN5E=",
+          "AAAAEgAAAAAAAAAAVVfV+aaJDIccoG6KihfVCWCashWGCQyqqQBc1TCcmg4="
+        ],
+        "value": "AAAAEQAAAAEAAAABAAAADwAAAAh0b2tlbl9pZAAAAAMAAAAC"
+      },
+      "decodificado": {
+        "topics": [
+          "transfer",
+          "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY",
+          "GBKVPVPZU2EQZBY4UBXIVCQX2UEWBGVSCWDASDFKVEAFZVJQTSNA4DXM"
+        ],
+        "value": {
+          "token_id": 2
+        }
+      }
+    }
+  ]
+}

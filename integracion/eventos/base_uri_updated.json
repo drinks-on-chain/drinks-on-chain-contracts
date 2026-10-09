@@ -1,0 +1,53 @@
+{
+  "evento": "base_uri_updated",
+  "rpc": {
+    "type": "contract",
+    "ledger": 28,
+    "ledgerClosedAt": "2026-10-09T03:25:00Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000120259088384-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "9a11fe80d3b47aec7c7d57e058719f7595e00f2031fac86f5bdacef51fd1d6d6",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAABBiYXNlX3VyaV91cGRhdGVk"
+    ],
+    "value": "AAAAEQAAAAEAAAABAAAADwAAAAhiYXNlX3VyaQAAAA4AAAAwaHR0cDovL2xvY2FsaG9zdDo0MDAwL3YxL3B1YmxpYy9uZnQvY2ludGktdmllam8v"
+  },
+  "decodificado": {
+    "topics": [
+      "base_uri_updated"
+    ],
+    "value": {
+      "base_uri": "http://localhost:4000/v1/public/nft/cinti-viejo/"
+    }
+  },
+  "otros": [
+    {
+      "rpc": {
+        "type": "contract",
+        "ledger": 30,
+        "ledgerClosedAt": "2026-10-09T03:25:02Z",
+        "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+        "id": "0000000128849022976-0000000000",
+        "operationIndex": 0,
+        "transactionIndex": 1,
+        "txHash": "748743fa28ae8a0ec5b771572201e306f52cdbaa4b6f532de081ec4704e4dd33",
+        "inSuccessfulContractCall": true,
+        "topic": [
+          "AAAADwAAABBiYXNlX3VyaV91cGRhdGVk"
+        ],
+        "value": "AAAAEQAAAAEAAAABAAAADwAAAAhiYXNlX3VyaQAAAA4AAAAwaHR0cDovL2xvY2FsaG9zdDo0MDAwL3YxL3B1YmxpYy9uZnQvY2ludGktdmllam8v"
+      },
+      "decodificado": {
+        "topics": [
+          "base_uri_updated"
+        ],
+        "value": {
+          "base_uri": "http://localhost:4000/v1/public/nft/cinti-viejo/"
+        }
+      }
+    }
+  ]
+}

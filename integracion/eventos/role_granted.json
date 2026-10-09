@@ -1,0 +1,90 @@
+{
+  "evento": "role_granted",
+  "rpc": {
+    "type": "contract",
+    "ledger": 24,
+    "ledgerClosedAt": "2026-10-09T03:24:56Z",
+    "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+    "id": "0000000103079219200-0000000000",
+    "operationIndex": 0,
+    "transactionIndex": 1,
+    "txHash": "c5f080974c7a52db83db0703938939553f6fd8729db2c37b06ec88bd17e1bdf5",
+    "inSuccessfulContractCall": true,
+    "topic": [
+      "AAAADwAAAAxyb2xlX2dyYW50ZWQ=",
+      "AAAADwAAAAZtaW50ZXIAAA==",
+      "AAAAEgAAAAAAAAAAPoiiKp9w3sVGx8PPVeyiBIRRNwxE6X5thwL71ixbN5E="
+    ],
+    "value": "AAAAEQAAAAEAAAABAAAADwAAAAZjYWxsZXIAAAAAABIAAAAAAAAAAD6IoiqfcN7FRsfDz1XsogSEUTcMROl+bYcC+9YsWzeR"
+  },
+  "decodificado": {
+    "topics": [
+      "role_granted",
+      "minter",
+      "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+    ],
+    "value": {
+      "caller": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+    }
+  },
+  "otros": [
+    {
+      "rpc": {
+        "type": "contract",
+        "ledger": 24,
+        "ledgerClosedAt": "2026-10-09T03:24:56Z",
+        "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+        "id": "0000000103079219200-0000000001",
+        "operationIndex": 0,
+        "transactionIndex": 1,
+        "txHash": "c5f080974c7a52db83db0703938939553f6fd8729db2c37b06ec88bd17e1bdf5",
+        "inSuccessfulContractCall": true,
+        "topic": [
+          "AAAADwAAAAxyb2xlX2dyYW50ZWQ=",
+          "AAAADwAAAAhvcGVyYXRvcg==",
+          "AAAAEgAAAAAAAAAAt4SBm+SL5ldiXxuN/kAO6MPCGmz1wrxttGuylstMhtc="
+        ],
+        "value": "AAAAEQAAAAEAAAABAAAADwAAAAZjYWxsZXIAAAAAABIAAAAAAAAAAD6IoiqfcN7FRsfDz1XsogSEUTcMROl+bYcC+9YsWzeR"
+      },
+      "decodificado": {
+        "topics": [
+          "role_granted",
+          "operator",
+          "GC3YJAM34SF6MV3CL4NY37SAB3UMHQQ2NT24FPDNWRV3FFWLJSDNOP63"
+        ],
+        "value": {
+          "caller": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+        }
+      }
+    },
+    {
+      "rpc": {
+        "type": "contract",
+        "ledger": 42,
+        "ledgerClosedAt": "2026-10-09T03:25:14Z",
+        "contractId": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+        "id": "0000000180388630528-0000000000",
+        "operationIndex": 0,
+        "transactionIndex": 1,
+        "txHash": "0470e51891b233baf4878a0c82c52c8824ca90f887685bb1a8ecfaab914127eb",
+        "inSuccessfulContractCall": true,
+        "topic": [
+          "AAAADwAAAAxyb2xlX2dyYW50ZWQ=",
+          "AAAADwAAAAZtaW50ZXIAAA==",
+          "AAAAEgAAAAAAAAAAGSCkGdGAjucJmkHYIQFjsVVqtNC1dQJPyyuioUAM46w="
+        ],
+        "value": "AAAAEQAAAAEAAAABAAAADwAAAAZjYWxsZXIAAAAAABIAAAAAAAAAAD6IoiqfcN7FRsfDz1XsogSEUTcMROl+bYcC+9YsWzeR"
+      },
+      "decodificado": {
+        "topics": [
+          "role_granted",
+          "minter",
+          "GAMSBJAZ2GAI5ZYJTJA5QIIBMOYVK2VU2C2XKASPZMV2FIKABTR2YLJ7"
+        ],
+        "value": {
+          "caller": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "drinks-on-chain-contracts-integracion",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Verificación de la firma separada (DS-18 / S-3), ejemplos de eventos y claves de TTL de winery-nft contra una red local stellar/quickstart",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "red:arrancar": "bash red-local.sh arrancar",
+    "red:parar": "bash red-local.sh parar",
+    "verificar": "node verificar.mjs"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "17.2.1"
+  }
+}

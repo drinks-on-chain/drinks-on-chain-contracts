@@ -1,0 +1,24 @@
+{
+  "nota": "Generado por integracion/verificar.mjs en una red local efímera; las direcciones no existen en ninguna otra red.",
+  "imagen": "stellar/quickstart:v676-b1505.1-testing@sha256:66a19476f2ce2ed09c4dccf3f1af4d438209eee9ee05eb113a02dd926e2b03f5 --local --enable core,rpc --protocol-version 29",
+  "red": "Standalone Network ; February 2017",
+  "protocolo": 29,
+  "rpc": "29.0.0",
+  "sdkJs": "17.2.1",
+  "wasmHash": "eb9f75b2a17117cab0c44d318ffd2f0f7642c488f56b31167998795ce22089d8",
+  "contrato": "CDQX4AKGU76O7GH7F6SXPWGQ7YAVQTYPUYCSER67PWHJA3M7GIF6LACH",
+  "cuentas": {
+    "operaciones": "GC3YJAM34SF6MV3CL4NY37SAB3UMHQQ2NT24FPDNWRV3FFWLJSDNOP63",
+    "bodega": "GA7IRIRKT5YN5RKGY7B46VPMUICIIUJXBRCOS7TNQ4BPXVRMLM3ZDJBY",
+    "bodegaNueva": "GD5VKO5T55TLUGJBKGF77OEABNT45CAYAOWSYVE4Q26HGU6TMCX5QHCF",
+    "consumidor": "GBKVPVPZU2EQZBY4UBXIVCQX2UEWBGVSCWDASDFKVEAFZVJQTSNA4DXM",
+    "otra": "GAMSBJAZ2GAI5ZYJTJA5QIIBMOYVK2VU2C2XKASPZMV2FIKABTR2YLJ7"
+  },
+  "respuestaGetEventsSinEventos": {
+    "cursor": "0000000236223201279-4294967295",
+    "latestLedger": 54,
+    "oldestLedger": 7,
+    "latestLedgerCloseTime": "1791516326",
+    "oldestLedgerCloseTime": "1791516278"
+  }
+}
